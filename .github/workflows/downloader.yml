@@ -5,7 +5,7 @@ jobs:
   AutoDownloaderProcess:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2.1.0
+    - uses: actions/checkout@v2
       with:
         persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
         fetch-depth: 0 
@@ -21,11 +21,9 @@ jobs:
     - name: Downloading
       run: |
         aria2c --seed-time=0 -d downloads ${{ secrets.DOWNLOAD }}
-
-    - name: Upload
-      run: | 
-        git config --global user.email ${{ secrets.EMAIL }}
-        git config --global user.name ${{ secrets.NAME }}
+        git config --local user.email ${{ secrets.EMAIL }}
+        git config --local user.name ${{ secrets.NAME }}
+        git add .
         git commit -m "upload" -a
 
 
