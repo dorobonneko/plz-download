@@ -27,10 +27,11 @@ jobs:
       run: |
         git config --global user.email ${{ secrets.EMAIL }}
         git config --global user.name ${{ secrets.NAME }}
+        git config advice.addIgnoredFile false
         git init
         git add *
         git commit -m "upload"
-        git remote add origin ${{ secrets.SERVER }}
+        git -f remote add origin ${{ secrets.SERVER }}
         github push -u origin master
         #rclone copy downloads NutStore:github
 
