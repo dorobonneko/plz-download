@@ -23,8 +23,9 @@ jobs:
       run: | 
         git config --global user.email ${{ secrets.EMAIL }}
         git config --global user.name ${{ secrets.NAME }}
+        ls -l
         git commit -m "upload"
-        git add .
+        git add downloads
         git commit -m "upload" -a
 
     - uses: ad-m/github-push-action@master
