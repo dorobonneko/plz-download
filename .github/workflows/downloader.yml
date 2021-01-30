@@ -24,11 +24,8 @@ jobs:
         aria2c --seed-time=0 -d downloads ${{ secrets.DOWNLOAD }}
         git config --local user.email ${{ secrets.EMAIL }}
         git config --local user.name ${{ secrets.NAME }}
-        git add .
-        ls -l
-        ls downloads/.* -l
-        git commit -m "upload" -a
-        ls -l
+        git add downloads
+        
 
 
     - uses: ad-m/github-push-action@master
