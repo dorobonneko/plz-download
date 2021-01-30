@@ -21,10 +21,7 @@ jobs:
         git config --global user.email ${{ secrets.EMAIL }}
         git config --global user.name ${{ secrets.NAME }}
         git config advice.addIgnoredFile false
-        git init
-        git remote rm origin
-        git remote add origin ${{ secrets.SERVER }}
-        git pull origin master
+        git clone ${{ secrets.SERVER }}
     - name: Downloading
       run: |
         aria2c --seed-time=0 -d downloads ${{ secrets.DOWNLOAD }}
@@ -32,6 +29,8 @@ jobs:
       run: |
         git add -f downloads
         git commit -m "upload"
-        git push -u origin master
+        git remote rm origin
+        git add remote origin ${{ secrents.SERVER }}
+        git push origin master
 
 
