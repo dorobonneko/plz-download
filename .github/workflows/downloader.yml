@@ -16,7 +16,8 @@ jobs:
         EOF
     - name: Init Git
       run: |
-        ls -l
+        mkdir dir
+        cd dir
         git config --global user.email ${{ secrets.EMAIL }}
         git config --global user.name ${{ secrets.NAME }}
         git config advice.addIgnoredFile false
