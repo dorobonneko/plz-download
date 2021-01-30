@@ -28,11 +28,11 @@ jobs:
     - name: Upload
       run: |
         git add -f downloads
+        ls -l
+        git clean –fd untracked folder
         git commit -m "upload"
         git remote remove origin
         git add remote origin ${{ secrets.SERVER }}
-        ls -l
-        git clean –fd untracked folder
         git push origin master
 
 
