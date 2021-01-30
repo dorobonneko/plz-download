@@ -24,9 +24,11 @@ jobs:
         git clone ${{ secrets.SERVER }}
     - name: Downloading
       run: |
+        cd dir
         aria2c --seed-time=0 -d downloads ${{ secrets.DOWNLOAD }}
     - name: Upload
       run: |
+        cd dir
         git add -f downloads
         ls -l
         git clean –fd untracked folder
