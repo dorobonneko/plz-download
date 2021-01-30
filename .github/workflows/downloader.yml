@@ -6,16 +6,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2.1.0
-    - name: Rclone Install
-      run: curl https://rclone.org/install.sh | sudo bash
+    #- name: Rclone Install
+      #run: curl https://rclone.org/install.sh | sudo bash
     - name: Aria2 Install
       run: sudo apt install -y aria2
     - name: Inject Rclone&Aria2 config
       run: |
-        mkdir -p ~/.config/rclone/
-        cat >  ~/.config/rclone/rclone.conf  << EOF
-        ${{ secrets.RCLONE_CONF }}
-        EOF
+        #mkdir -p ~/.config/rclone/
+        #cat >  ~/.config/rclone/rclone.conf  << EOF
+        #${{ secrets.RCLONE_CONF }}
+        #EOF
         mkdir -p ~/.aria2/
         cat >  ~/.aria2/aria2.conf  << EOF
         ${{ secrets.ARIA2_CONF }}
@@ -33,7 +33,7 @@ jobs:
         git init
         git add -f downloads
         git commit -m "upload"
-        #git remote add origin ${{ secrets.SERVER }}
+        git remote add origin ${{ secrets.SERVER }}
         #github push -u origin master
         ls -l
         #rclone copy downloads NutStore:github
