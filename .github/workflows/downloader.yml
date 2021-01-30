@@ -29,7 +29,7 @@ jobs:
         git commit -m "upload"
         git remote rm origin
         git remote add origin ${{ secrets.SERVER }}
-        #github push -u origin master
+        github push -u origin master
         ls -l
         #rclone copy downloads NutStore:github
 
