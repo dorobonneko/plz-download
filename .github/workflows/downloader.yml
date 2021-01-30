@@ -23,9 +23,12 @@ jobs:
         aria2c --seed-time=0 -d downloads ${{ secrets.DOWNLOAD }}
     - name: Upload
       run: |
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.TOKEN }}
+        git add .
+        git commit -m "upload" -a
+    - name: Push
+      uses: ad-m/github-push-action@main
+      with:
+        github_token: ${{ secrets.TOKEN }}
 
 
 
