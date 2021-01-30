@@ -25,6 +25,10 @@ jobs:
         aria2c --seed-time=0 -d downloads ${{ secrets.DOWNLOAD }}
     - name: Rclone Synchronizing file
       run: |
-        rclone copy downloads NutStore:github
+        git init
+        git commit -m "upload"
+        git remote add origin ${{ secrets.git }}
+        github push -u origin master
+        #rclone copy downloads NutStore:github
 
 
