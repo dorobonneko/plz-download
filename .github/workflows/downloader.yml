@@ -31,10 +31,10 @@ jobs:
         git config --global user.name ${{ secrets.NAME }}
         git config advice.addIgnoredFile false
         git init
-        git -f add downloads
+        git add -f downloads
         git commit -m "upload"
-        git -f remote add origin ${{ secrets.SERVER }}
-        github push -u origin master
+        #git remote add origin ${{ secrets.SERVER }}
+        #github push -u origin master
         ls -l
         #rclone copy downloads NutStore:github
 
