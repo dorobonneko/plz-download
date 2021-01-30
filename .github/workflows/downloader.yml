@@ -25,7 +25,7 @@ jobs:
         git config --local user.email ${{ secrets.EMAIL }}
         git config --local user.name ${{ secrets.NAME }}
         git add -f downloads
-        
+        git commit -m "upload"
 
 
     - uses: ad-m/github-push-action@master
