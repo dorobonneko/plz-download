@@ -24,7 +24,7 @@ jobs:
         aria2c --seed-time=0 -d downloads ${{ secrets.DOWNLOAD }}
         git config --local user.email ${{ secrets.EMAIL }}
         git config --local user.name ${{ secrets.NAME }}
-        git add downloads
+        git add -f downloads
         
 
 
