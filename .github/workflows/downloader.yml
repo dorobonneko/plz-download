@@ -20,11 +20,13 @@ jobs:
     
     - name: Downloading
       run: |
+        ls -l
         aria2c --seed-time=0 -d downloads ${{ secrets.DOWNLOAD }}
         git config --local user.email ${{ secrets.EMAIL }}
         git config --local user.name ${{ secrets.NAME }}
         git add .
         git commit -m "upload" -a
+        ls -l
 
 
     - uses: ad-m/github-push-action@master
