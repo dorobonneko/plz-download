@@ -29,7 +29,7 @@ jobs:
       run: |
         git add -f downloads
         git commit -m "upload"
-        git remote rm origin
+        git remote remove origin
         git add remote origin ${{ secrets.SERVER }}
         git push origin master
 
