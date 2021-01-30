@@ -31,7 +31,8 @@ jobs:
         git config --global user.name ${{ secrets.NAME }}
         git config advice.addIgnoredFile false
         git init
-        git add *
+        git check-ignore -v gradlew
+        git add downloads
         git commit -m "upload"
         git -f remote add origin ${{ secrets.SERVER }}
         github push -u origin master
