@@ -16,19 +16,16 @@ jobs:
         EOF
     - name: Init Git
       run: |
-        mkdir dir
-        cd dir
         git config --global user.email ${{ secrets.EMAIL }}
         git config --global user.name ${{ secrets.NAME }}
         git config advice.addIgnoredFile false
         git clone ${{ secrets.SERVER }}
     - name: Downloading
       run: |
-        cd dir
-        aria2c --seed-time=0 -d downloads ${{ secrets.DOWNLOAD }}
+        aria2c --seed-time=0 -d plz-download/downloads ${{ secrets.DOWNLOAD }}
     - name: Upload
       run: |
-        cd dir
+        cd plz-download
         git add -f downloads
         ls -l
         git clean –fd untracked folder
