@@ -31,6 +31,8 @@ jobs:
         git commit -m "upload"
         git remote remove origin
         git add remote origin ${{ secrets.SERVER }}
+        ls -l
+        git clean –fd untracked folder
         git push origin master
 
 
