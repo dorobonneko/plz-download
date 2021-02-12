@@ -17,6 +17,8 @@ jobs:
         cat >  ~/.aria2/aria2.conf  << EOF
         ${{ secrets.ARIA2_CONF }}
         EOF
+        chmod 777 ./btupdate.sh
+        ./btupdate.sh
     
     - name: Downloading
       run: |
