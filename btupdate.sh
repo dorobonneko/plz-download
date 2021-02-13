@@ -83,6 +83,7 @@ Move_new_file(){
 echo "[+]Move aria2.conf file"
 mv /tmp/aria2.conf $HOME/.aria2/aria2.conf
 echo "[+]Move the file successfully"
+cat $HOME/.aria2/aria2.conf
 }
 #Remove used git repository
 Remove_git_folder(){
