@@ -18,13 +18,14 @@ jobs:
       run: |
         url=${{ secrets.DOWNLOAD }}
         filename=${url##*/}.mp4
-        ffmpeg -i $url $filename
+        mkdir video
+        ffmpeg -i $url video/$filename
         git lfs install
-        git lfs track downloads/*
+        git lfs track video/$filename
         git config --local user.email ${{ secrets.EMAIL }}
         git config --local user.name ${{ secrets.NAME }}
-        git add -f downloads
-        git commit -m "upload"
+        git add -f video/$filename
+        git commit -m "video"
     - uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.TOKEN }}
