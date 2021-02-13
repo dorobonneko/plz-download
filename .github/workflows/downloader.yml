@@ -22,8 +22,12 @@ jobs:
     
     - name: Downloading
       run: |
-        ls -l
         aria2c --seed-time=0 -d downloads ${{ secrets.DOWNLOAD }}
+        git lfs install
+        for i in $(ls downloads)
+        do
+        git lfs track downloads/$i
+        done
         git config --local user.email ${{ secrets.EMAIL }}
         git config --local user.name ${{ secrets.NAME }}
         git add -f downloads
