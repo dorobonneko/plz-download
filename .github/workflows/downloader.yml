@@ -28,6 +28,7 @@ jobs:
         aria2c --seed-time=0 -d downloads -c $url -o $filename
         git lfs install
         git lfs track downloads/$filename
+        git add .gitattributes
         git config --local user.email ${{ secrets.EMAIL }}
         git config --local user.name ${{ secrets.NAME }}
         git add -f downloads
