@@ -22,9 +22,12 @@ jobs:
     
     - name: Downloading
       run: |
-        aria2c --seed-time=0 -d downloads ${{ secrets.DOWNLOAD }}
+        url=${{ secrets.DOWNLOAD }}
+        filename=${url##*/}
+        [[ $filename == *\?* ]] && filename=${filename%%\?*}
+        aria2c --seed-time=0 -d downloads -c $url -o $filename
         git lfs install
-        git lfs track downloads/*
+        git lfs track downloads/$filename
         git config --local user.email ${{ secrets.EMAIL }}
         git config --local user.name ${{ secrets.NAME }}
         git add -f downloads
